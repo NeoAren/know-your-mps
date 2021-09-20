@@ -7,18 +7,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import com.squareup.picasso.Picasso
-import eu.neoaren.knowyourmps.databinding.FragmentDetailsBinding
+import eu.neoaren.knowyourmps.databinding.FragmentMemberDetailsBinding
 import java.time.LocalDate
-import java.util.*
 
-class DetailsFragment : Fragment() {
+class MemberDetailsFragment : Fragment() {
 
-  private lateinit var binding: FragmentDetailsBinding
+  private lateinit var binding: FragmentMemberDetailsBinding
 
   @SuppressLint("SetTextI18n")
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-    binding = DataBindingUtil.inflate(inflater, R.layout.fragment_details, container, false)
+    binding = DataBindingUtil.inflate(inflater, R.layout.fragment_member_details, container, false)
 
     // Render random MP once
     renderRandomParliamentMember()
@@ -26,6 +26,10 @@ class DetailsFragment : Fragment() {
     // Render random MP on button press
     binding.random.setOnClickListener {
       renderRandomParliamentMember()
+    }
+
+    binding.toMemberList.setOnClickListener {
+      it.findNavController().navigate(R.id.action_memberDetailsFragment_to_memberListFragment)
     }
 
     return binding.root

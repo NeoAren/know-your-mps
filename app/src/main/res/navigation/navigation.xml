@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/partyListFragment">
+
+    <fragment
+        android:id="@+id/memberDetailsFragment"
+        android:name="eu.neoaren.knowyourmps.MemberDetailsFragment"
+        android:label="MemberDetailsFragment"
+        tools:layout="@layout/fragment_member_details">
+        <action
+            android:id="@+id/action_memberDetailsFragment_to_memberListFragment"
+            app:destination="@id/memberListFragment" />
+        <action
+            android:id="@+id/action_memberDetailsFragment_to_memberListFragment2"
+            app:destination="@id/memberListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/memberListFragment"
+        android:name="eu.neoaren.knowyourmps.MemberListFragment"
+        android:label="MemberListFragment"
+        tools:layout="@layout/fragment_member_list">
+        <action
+            android:id="@+id/action_memberListFragment_to_memberDetailsFragment"
+            app:destination="@id/memberDetailsFragment" />
+        <action
+            android:id="@+id/action_memberListFragment_to_memberDetailsFragment2"
+            app:destination="@id/memberDetailsFragment" />
+        <action
+            android:id="@+id/action_memberListFragment_to_partyListFragment"
+            app:destination="@id/partyListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/partyListFragment"
+        android:name="eu.neoaren.knowyourmps.PartyListFragment"
+        android:label="PartyListFragment"
+        tools:layout="@layout/fragment_party_list">
+        <action
+            android:id="@+id/action_partyListFragment_to_memberListFragment"
+            app:destination="@id/memberListFragment" />
+    </fragment>
+</navigation>
