@@ -15,10 +15,13 @@ class MainActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-
     lifecycleScope.launch {
       val mps = MemberOfParliamentApi.service.getMPs()
-      Log.d("MPs", mps.toString());
+      Log.d("MPs", mps.toString())
+      val database = (application as App).database
+      mps.forEach {
+        database.memberOfParliamentDAO.insert(it)
+      }
     }
   }
 

@@ -37,20 +37,20 @@ class MemberDetailsFragment : Fragment() {
 
   @SuppressLint("SetTextI18n")
   private fun renderRandomParliamentMember() {
-    val member = ParliamentMembersData.members.shuffled().take(1)[0]
-
-    val title = if (member.minister) "Minister" else "Member of Parliament"
-    val age = (LocalDate.now().year - member.bornYear).toString()
-
-    binding.title.text = title
-    binding.name.text = "${member.first} ${member.last} ($age)"
-    binding.party.text = member.party.uppercase()
-    binding.constituency.text = member.constituency
-
-    Picasso
-      .get()
-      .load("https://avoindata.eduskunta.fi/${member.picture}")
-      .into(binding.imageView)
+    // val member = ParliamentMembersData.members.shuffled().take(1)[0]
+    //
+    // val title = if (member.minister) "Minister" else "Member of Parliament"
+    // val age = (LocalDate.now().year - member.bornYear).toString()
+    //
+    // binding.title.text = title
+    // binding.name.text = "${member.first} ${member.last} ($age)"
+    // binding.party.text = member.party.uppercase()
+    // binding.constituency.text = member.constituency
+    //
+    // Picasso
+    //   .get()
+    //   .load("https://avoindata.eduskunta.fi/${member.picture}")
+    //   .into(binding.imageView)
   }
 
 }
