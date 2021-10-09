@@ -1,4 +1,4 @@
-package eu.neoaren.knowyourmps
+package eu.neoaren.knowyourmps.data
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

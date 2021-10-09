@@ -7,8 +7,10 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import dagger.hilt.android.AndroidEntryPoint
 import eu.neoaren.knowyourmps.databinding.FragmentPartyListBinding
 
+@AndroidEntryPoint
 class PartyListFragment : Fragment() {
 
   private lateinit var binding: FragmentPartyListBinding

@@ -1,9 +1,7 @@
 package eu.neoaren.knowyourmps
 
 import android.app.Application
+import dagger.hilt.android.HiltAndroidApp
 
-class App : Application() {
-
-  val database by lazy { MPsDatabase.getInstance(applicationContext) }
-
-}
+@HiltAndroidApp
+class App : Application()
