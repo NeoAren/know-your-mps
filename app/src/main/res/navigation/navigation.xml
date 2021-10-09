@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_memberDetailsFragment_to_memberListFragment2"
             app:destination="@id/memberListFragment" />
+        <argument
+            android:name="personNumber"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/memberListFragment"
@@ -31,6 +34,9 @@
         <action
             android:id="@+id/action_memberListFragment_to_partyListFragment"
             app:destination="@id/partyListFragment" />
+        <argument
+            android:name="party"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/partyListFragment"

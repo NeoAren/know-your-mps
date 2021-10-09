@@ -15,4 +15,10 @@ interface MemberOfParliamentDao {
   @Query("select distinct party from mps_table")
   fun getParties(): Flow<List<String>>
 
+  @Query("select * from mps_table where party = :party")
+  fun getByParty(party: String): Flow<List<MemberOfParliament>>
+
+  @Query("select * from mps_table where personNumber = :personNumber")
+  fun getByPersonNumber(personNumber: Int): Flow<MemberOfParliament>
+
 }
