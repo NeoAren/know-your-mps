@@ -1,5 +1,6 @@
 package eu.neoaren.knowyourmps
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -10,9 +11,12 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
+import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
+import eu.neoaren.knowyourmps.data.MemberOfParliament
 import eu.neoaren.knowyourmps.databinding.FragmentMemberDetailsBinding
 import eu.neoaren.knowyourmps.viewmodels.MemberDetailsViewModel
+import java.time.LocalDate
 
 @AndroidEntryPoint
 class MemberDetailsFragment : Fragment() {
@@ -24,15 +28,25 @@ class MemberDetailsFragment : Fragment() {
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
     binding = DataBindingUtil.inflate(inflater, R.layout.fragment_member_details, container, false)
 
-    binding.toMemberList.setOnClickListener {
-      it.findNavController().navigateUp()
-    }
-
-    viewModel.member.observe(viewLifecycleOwner) {
-      Log.d("MEMBER ${args.personNumber}", it.toString())
-    }
+    viewModel.member.observe(viewLifecycleOwner) { updateUI(it) }
 
     return binding.root
+  }
+
+  @SuppressLint("SetTextI18n")
+  fun updateUI(member: MemberOfParliament) {
+    val title = if (member.minister) "Minister" else "Member of Parliament"
+    val age = (LocalDate.now().year - member.bornYear).toString()
+
+    binding.title.text = title
+    binding.name.text = "${member.first} ${member.last} ($age)"
+    binding.party.text = member.party.uppercase()
+    binding.constituency.text = member.constituency
+
+    Picasso
+      .get()
+      .load("https://avoindata.eduskunta.fi/${member.picture}")
+      .into(binding.imageView)
   }
 
 }
