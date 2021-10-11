@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Know your MPs</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="save_note">Save note</string>
     <string name="enter_note">Enter note</string>
@@ -16,4 +15,7 @@
     <string name="personal_details">Personal details</string>
     <string name="picture_of_mp">Picture of MP</string>
     <string name="lorem_ipsum_dolor_sit_amet">Lorem ipsum dolor sit amet</string>
+    <string name="first_name_last_name">First name, Last name</string>
+    <string name="constituency_notes">Constituency (# notes)</string>
+    <string name="test">Test</string>
 </resources>

@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
     app:startDestination="@id/partyListFragment">
-
     <fragment
         android:id="@+id/memberDetailsFragment"
         android:name="eu.neoaren.knowyourmps.MemberDetailsFragment"
