@@ -6,14 +6,6 @@ plugins {
     id "androidx.navigation.safeargs.kotlin"
 }
 
-ext {
-    navigationVersion = "2.3.5"
-    roomVersion = "2.3.0"
-    lifecycle_version = "2.3.1"
-    arch_version = "2.1.0"
-    work_version = "2.6.0"
-}
-
 android {
     compileSdk 30
 
@@ -54,40 +46,29 @@ kapt {
 }
 
 dependencies {
-
-    // Android
-    implementation "androidx.core:core-ktx:1.6.0"
-    implementation "androidx.appcompat:appcompat:1.3.1"
-    implementation "com.google.android.material:material:1.4.0"
-    implementation "androidx.constraintlayout:constraintlayout:2.1.1"
-    implementation "androidx.legacy:legacy-support-v4:1.0.0"
+    kapt "androidx.hilt:hilt-compiler:$hiltAndroidxVersion"
+    kapt "androidx.room:room-compiler:$roomVersion"
+    kapt "com.google.dagger:hilt-android-compiler:$hiltVersion"
+    implementation "androidx.appcompat:appcompat:$appCompatVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
+    implementation "androidx.core:core-ktx:$coreVersion"
+    implementation "androidx.fragment:fragment-ktx:$fragmentVersion"
+    implementation "androidx.hilt:hilt-work:$hiltAndroidxVersion"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycleVersion"
+    implementation "androidx.navigation:navigation-runtime-ktx:$navigationVersion"
     implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
     implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
-    implementation "androidx.fragment:fragment-ktx:1.3.6"
-
-    // Lifecycle
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycle_version"
-
-    // Connectivity
-    implementation "com.squareup.picasso:picasso:2.71828"
-    implementation "com.squareup.retrofit2:retrofit:2.9.0"
-    implementation "com.squareup.retrofit2:converter-moshi:2.9.0"
-    implementation "com.squareup.moshi:moshi-kotlin:1.12.0"
-
-    // Room database
+    implementation "androidx.room:room-runtime:$roomVersion"
     implementation "androidx.room:room-ktx:$roomVersion"
-    kapt "androidx.room:room-compiler:$roomVersion"
-    androidTestImplementation "androidx.room:room-testing:$roomVersion"
-
-    // Hilt (dependency injection)
-    implementation "com.google.dagger:hilt-android:2.38.1"
-    kapt "com.google.dagger:hilt-android-compiler:2.38.1"
-
-    // Testing
-    testImplementation "junit:junit:4.13.2"
-    androidTestImplementation "androidx.test.espresso:espresso-core:3.4.0"
-    androidTestImplementation "androidx.test.ext:junit:1.1.3"
+    implementation "androidx.work:work-runtime-ktx:$workVersion"
+    implementation "com.google.dagger:hilt-android:$hiltVersion"
+    implementation "com.google.android.material:material:$materialVersion"
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
+    implementation "com.squareup.moshi:moshi-kotlin:$moshiVersion"
+    implementation "com.squareup.picasso:picasso:$picassoVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
 }
