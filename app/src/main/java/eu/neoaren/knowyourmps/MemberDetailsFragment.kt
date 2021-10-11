@@ -62,10 +62,12 @@ class MemberDetailsFragment : Fragment() {
   // Add a new note to the viewed member
   private fun saveNote() {
     val note = binding.note.text.toString()
-    binding.note.text.clear()
-    binding.note.clearFocus()
-    viewModel.attachNewNote(note)
-    hideSoftKeyboard()
+    if (note.isNotEmpty()) {
+      binding.note.text.clear()
+      binding.note.clearFocus()
+      viewModel.attachNewNote(note)
+      hideSoftKeyboard()
+    }
   }
 
   // Programmatically hide software keyboard
