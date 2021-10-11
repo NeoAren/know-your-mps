@@ -7,7 +7,7 @@ import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import eu.neoaren.knowyourmps.workers.SeedDatabaseWorker
 
-@Database(entities = [MemberOfParliament::class, Note::class], version = 4)
+@Database(entities = [MemberOfParliament::class, Note::class], version = 5)
 abstract class AppDatabase : RoomDatabase() {
 
   abstract fun memberOfParliamentDao(): MemberOfParliamentDao

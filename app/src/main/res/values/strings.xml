@@ -2,4 +2,18 @@
     <string name="app_name">Know your MPs</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="save_note">Save note</string>
+    <string name="enter_note">Enter note</string>
+    <string name="notes">Notes</string>
+    <string name="uusimaa">Uusimaa</string>
+    <string name="constituency">Constituency</string>
+    <string name="best_party_ever">Best Party Ever</string>
+    <string name="party">Party</string>
+    <string name="john_doe">John Doe</string>
+    <string name="name">Name</string>
+    <string name="member_of_parliament">Member of Parliament</string>
+    <string name="title">Title</string>
+    <string name="personal_details">Personal details</string>
+    <string name="picture_of_mp">Picture of MP</string>
+    <string name="lorem_ipsum_dolor_sit_amet">Lorem ipsum dolor sit amet</string>
 </resources>
