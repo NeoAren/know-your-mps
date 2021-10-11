@@ -14,7 +14,7 @@ class PartyListAdapter : ListAdapter<String, PartyListAdapter.PartyItemViewHolde
   class PartyItemViewHolder(private val binding: PartyListItemBinding) : RecyclerView.ViewHolder(binding.root) {
     // Update the view holder with the data of a new party
     fun bind(party: String) {
-      binding.partyName.text = party
+      binding.partyName.text = party.uppercase()
       binding.partyName.setOnClickListener {
         val direction = PartyListFragmentDirections.actionPartyListFragmentToMemberListFragment(party)
         binding.root.findNavController().navigate(direction)
