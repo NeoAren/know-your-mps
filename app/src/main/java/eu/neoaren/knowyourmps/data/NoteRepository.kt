@@ -10,4 +10,6 @@ class NoteRepository @Inject constructor(
 
   suspend fun insert(entry: Note) = noteDao.insert(entry)
 
+  fun getByPersonNumber(personNumber: Int) = noteDao.getByPersonNumber(personNumber)
+
 }

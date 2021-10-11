@@ -20,6 +20,8 @@ class SeedDatabaseWorker @AssistedInject constructor(
   @Assisted workerParameters: WorkerParameters,
   private val memberOfParliamentRepository: MemberOfParliamentRepository,
 ) : CoroutineWorker(context, workerParameters) {
+
+  // Load the latest data from the API, then insert it into the database
   override suspend fun doWork(): Result = withContext(Dispatchers.IO) {
     Log.d(TAG, "Initiating database seeding process")
     try {
@@ -34,7 +36,8 @@ class SeedDatabaseWorker @AssistedInject constructor(
   }
 
   companion object {
-    private const val TAG = "SeedDatabaseWorker"
+    // Constrain the work to only be run over unmetered connection (e.g. wifi)
     val constraints = Constraints.Builder().setRequiredNetworkType(NetworkType.UNMETERED).build()
+    private const val TAG = "SeedDatabaseWorker"
   }
 }

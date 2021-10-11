@@ -11,6 +11,7 @@ class PartyListViewModel @Inject constructor(
   memberOfParliamentRepository: MemberOfParliamentRepository,
 ) : ViewModel() {
 
+  // List of all parties
   val parties = memberOfParliamentRepository.getParties().asLiveData()
 
 }

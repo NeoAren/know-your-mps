@@ -9,13 +9,14 @@ import androidx.recyclerview.widget.RecyclerView
 import eu.neoaren.knowyourmps.PartyListFragmentDirections
 import eu.neoaren.knowyourmps.databinding.PartyListItemBinding
 
-class PartyItemAdapter : ListAdapter<String, PartyItemAdapter.PartyItemViewHolder>(DiffCallback()) {
+class PartyListAdapter : ListAdapter<String, PartyListAdapter.PartyItemViewHolder>(DiffCallback()) {
 
   class PartyItemViewHolder(private val binding: PartyListItemBinding) : RecyclerView.ViewHolder(binding.root) {
-    fun bind(newParty: String) {
-      binding.partyName.text = newParty
+    // Update the view holder with the data of a new party
+    fun bind(party: String) {
+      binding.partyName.text = party
       binding.partyName.setOnClickListener {
-        val direction = PartyListFragmentDirections.actionPartyListFragmentToMemberListFragment(newParty)
+        val direction = PartyListFragmentDirections.actionPartyListFragmentToMemberListFragment(party)
         binding.root.findNavController().navigate(direction)
       }
     }

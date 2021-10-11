@@ -19,11 +19,13 @@ abstract class AppDatabase : RoomDatabase() {
     @Volatile
     private var instance: AppDatabase? = null
 
+    // Get an instance of the database
     fun getInstance(context: Context): AppDatabase {
       return instance ?: synchronized(this) {
         Room.databaseBuilder(context, AppDatabase::class.java, "mps_db")
           .fallbackToDestructiveMigration()
           .addCallback(object : RoomDatabase.Callback() {
+            // Create one time work request to seed the database
             override fun onCreate(db: SupportSQLiteDatabase) {
               super.onCreate(db)
               val request = OneTimeWorkRequestBuilder<SeedDatabaseWorker>()

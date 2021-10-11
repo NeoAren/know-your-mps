@@ -16,8 +16,7 @@ interface MemberOfParliamentDao {
   @Query("select * from mps_table where party = :party")
   fun getByParty(party: String): Flow<List<MemberOfParliamentWithNotes>>
 
-  @Transaction
   @Query("select * from mps_table where personNumber = :personNumber")
-  fun getByPersonNumber(personNumber: Int): Flow<MemberOfParliamentWithNotes>
+  fun getByPersonNumber(personNumber: Int): Flow<MemberOfParliament>
 
 }

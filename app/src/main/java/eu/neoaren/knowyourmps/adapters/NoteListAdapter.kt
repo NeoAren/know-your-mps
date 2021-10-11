@@ -8,10 +8,10 @@ import androidx.recyclerview.widget.RecyclerView
 import eu.neoaren.knowyourmps.data.Note
 import eu.neoaren.knowyourmps.databinding.NoteListItemBinding
 
-
 class NoteListAdapter : ListAdapter<Note, NoteListAdapter.NoteItemViewHolder>(NoteListDiffCallback()) {
 
   class NoteItemViewHolder(private val binding: NoteListItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    // Update the view holder with the data of a new note
     fun bind(note: Note) {
       binding.noteContent.text = note.content
     }

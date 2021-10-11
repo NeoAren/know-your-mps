@@ -23,12 +23,14 @@ class MemberListFragment : Fragment() {
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
     binding = DataBindingUtil.inflate(inflater, R.layout.fragment_member_list, container, false)
 
+    // Configure member list adapter
     val adapter = MemberListAdapter()
     binding.memberList.adapter = adapter
     binding.memberList.setHasFixedSize(true)
     binding.memberList.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
     binding.memberList.layoutManager = LinearLayoutManager(context)
 
+    // Observe members and update adapter when needed
     viewModel.members.observe(viewLifecycleOwner) { adapter.submitList(it) }
 
     return binding.root

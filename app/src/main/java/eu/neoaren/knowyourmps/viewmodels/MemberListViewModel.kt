@@ -13,8 +13,10 @@ class MemberListViewModel @Inject constructor(
   memberOfParliamentRepository: MemberOfParliamentRepository,
 ) : ViewModel() {
 
+  // The currently viewed party
   private val party = savedStateHandle.get<String>("party") ?: ""
 
+  // List of all members in the viewed party
   val members = memberOfParliamentRepository.getByParty(party).asLiveData()
 
 }

@@ -15,6 +15,7 @@ import eu.neoaren.knowyourmps.databinding.MemberListItemBinding
 class MemberListAdapter : ListAdapter<MemberOfParliamentWithNotes, MemberListAdapter.MemberItemViewHolder>(MemberListDiffCallback()) {
 
   class MemberItemViewHolder(private val binding: MemberListItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    // Update the view holder with the data of a new member of parliament with notes
     @SuppressLint("SetTextI18n")
     fun bind(data: MemberOfParliamentWithNotes) {
       val member = data.memberOfParliament

@@ -1,9 +1,6 @@
 package eu.neoaren.knowyourmps.viewmodels
 
-import androidx.lifecycle.SavedStateHandle
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import eu.neoaren.knowyourmps.data.MemberOfParliament
 import eu.neoaren.knowyourmps.data.MemberOfParliamentRepository
@@ -20,13 +17,19 @@ class MemberDetailsViewModel @Inject constructor(
   private val noteRepository: NoteRepository,
 ) : ViewModel() {
 
+  // ID of the currently viewed member of parliament
   private val personNumber = savedStateHandle.get<Int>("personNumber") ?: 0
 
+  // The details of the currently viewed member of parliament
   val member = memberOfParliamentRepository.getByPersonNumber(personNumber).asLiveData()
 
-  fun addNoteToMP(mp: MemberOfParliament, note: String) {
+  // List of all notes attached to the currently viewed member of parliament
+  val notes = noteRepository.getByPersonNumber(personNumber).asLiveData()
+
+  // Attach a new note to the currently viewed member of parliament
+  fun attachNewNote(note: String) {
     viewModelScope.launch {
-      noteRepository.insert(Note(randomUUID().toString(), mp.personNumber, note))
+      noteRepository.insert(Note(randomUUID().toString(), personNumber, note))
     }
   }
 

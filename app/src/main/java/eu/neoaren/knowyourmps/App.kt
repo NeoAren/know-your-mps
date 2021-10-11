@@ -16,6 +16,7 @@ class App : Application(), Configuration.Provider {
 
   @Inject lateinit var workerFactory: HiltWorkerFactory
 
+  // Configure WorkManager
   override fun getWorkManagerConfiguration(): Configuration {
     return Configuration.Builder()
       .setMinimumLoggingLevel(Log.DEBUG)
@@ -23,6 +24,7 @@ class App : Application(), Configuration.Provider {
       .build()
   }
 
+  // Create periodic work request to re-seed the database every hour
   override fun onCreate() {
     super.onCreate()
     val request = PeriodicWorkRequestBuilder<SeedDatabaseWorker>(1, TimeUnit.HOURS)

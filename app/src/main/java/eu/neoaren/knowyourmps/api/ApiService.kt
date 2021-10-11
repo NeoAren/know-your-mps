@@ -16,6 +16,7 @@ interface ApiService {
 
     private const val BASE_URL = "https://users.metropolia.fi/"
 
+    // Create retrofit service with moshi converter
     fun create(): ApiService {
       val moshi = Moshi.Builder()
         .add(KotlinJsonAdapterFactory())
