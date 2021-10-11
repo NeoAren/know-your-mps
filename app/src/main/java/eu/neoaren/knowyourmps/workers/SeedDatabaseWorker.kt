@@ -3,7 +3,9 @@ package eu.neoaren.knowyourmps.workers
 import android.content.Context
 import android.util.Log
 import androidx.hilt.work.HiltWorker
+import androidx.work.Constraints
 import androidx.work.CoroutineWorker
+import androidx.work.NetworkType
 import androidx.work.WorkerParameters
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
@@ -33,5 +35,6 @@ class SeedDatabaseWorker @AssistedInject constructor(
 
   companion object {
     private const val TAG = "SeedDatabaseWorker"
+    val constraints = Constraints.Builder().setRequiredNetworkType(NetworkType.UNMETERED).build()
   }
 }
