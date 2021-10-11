@@ -26,8 +26,8 @@
                 android:text="@string/personal_details"
                 android:textSize="20sp" />
             <TableLayout
-                android:layout_width="412dp"
-                android:layout_height="153dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:divider="#C5C5C5"
                 android:showDividers="beginning|middle|end"
                 android:stretchColumns="1">
