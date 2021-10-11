@@ -7,20 +7,22 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import eu.neoaren.knowyourmps.MemberListFragmentDirections
-import eu.neoaren.knowyourmps.data.MemberOfParliament
+import eu.neoaren.knowyourmps.data.MemberOfParliamentWithNotes
 import eu.neoaren.knowyourmps.databinding.MemberListItemBinding
 
-class MemberListAdapter : ListAdapter<MemberOfParliament, MemberListAdapter.MemberItemViewHolder>(MemberDiffCallback()) {
+class MemberListAdapter : ListAdapter<MemberOfParliamentWithNotes, MemberListAdapter.MemberItemViewHolder>(MemberListDiffCallback()) {
 
-  class MemberItemViewHolder(
-    private val binding: MemberListItemBinding,
-  ) : RecyclerView.ViewHolder(binding.root) {
+  class MemberItemViewHolder(private val binding: MemberListItemBinding) : RecyclerView.ViewHolder(binding.root) {
     @SuppressLint("SetTextI18n")
-    fun bind(newMP: MemberOfParliament) {
-      binding.memberName.text = "${newMP.first} ${newMP.last}"
-      binding.memberName.setOnClickListener {
-        val direction = MemberListFragmentDirections.actionMemberListFragmentToMemberDetailsFragment(newMP.personNumber)
+    fun bind(data: MemberOfParliamentWithNotes) {
+      val member = data.memberOfParliament
+      val notes = data.notes
+      binding.memberName.text = "${member.first} ${member.last}"
+      binding.memberDescription.text = "${member.constituency}, (${notes.size} notes)"
+      binding.memberContainer.setOnClickListener {
+        val direction = MemberListFragmentDirections.actionMemberListFragmentToMemberDetailsFragment(member.personNumber)
         binding.root.findNavController().navigate(direction)
       }
     }
@@ -43,17 +45,17 @@ class MemberListAdapter : ListAdapter<MemberOfParliament, MemberListAdapter.Memb
 
 }
 
-class MemberDiffCallback : DiffUtil.ItemCallback<MemberOfParliament>() {
+class MemberListDiffCallback : DiffUtil.ItemCallback<MemberOfParliamentWithNotes>() {
   override fun areItemsTheSame(
-    oldItem: MemberOfParliament,
-    newItem: MemberOfParliament,
+    oldItem: MemberOfParliamentWithNotes,
+    newItem: MemberOfParliamentWithNotes,
   ): Boolean {
-    return oldItem == newItem
+    return oldItem.memberOfParliament == newItem.memberOfParliament
   }
   override fun areContentsTheSame(
-    oldItem: MemberOfParliament,
-    newItem: MemberOfParliament,
+    oldItem: MemberOfParliamentWithNotes,
+    newItem: MemberOfParliamentWithNotes,
   ): Boolean {
-    return oldItem == newItem
+    return oldItem.memberOfParliament == newItem.memberOfParliament
   }
 }

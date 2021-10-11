@@ -8,6 +8,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import eu.neoaren.knowyourmps.data.AppDatabase
 import eu.neoaren.knowyourmps.data.MemberOfParliamentDao
+import eu.neoaren.knowyourmps.data.NoteDao
 import javax.inject.Singleton
 
 @InstallIn(SingletonComponent::class)
@@ -23,6 +24,11 @@ class DatabaseModule {
   @Provides
   fun provideMemberOfParliamentDao(appDatabase: AppDatabase): MemberOfParliamentDao {
     return appDatabase.memberOfParliamentDao()
+  }
+
+  @Provides
+  fun provideNoteDao(appDatabase: AppDatabase): NoteDao {
+    return appDatabase.noteDao()
   }
 
 }

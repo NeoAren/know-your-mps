@@ -26,7 +26,7 @@ class MemberDetailsFragment : Fragment() {
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
     binding = DataBindingUtil.inflate(inflater, R.layout.fragment_member_details, container, false)
 
-    viewModel.member.observe(viewLifecycleOwner) { updateUI(it) }
+    viewModel.member.observe(viewLifecycleOwner) { updateUI(it.memberOfParliament) }
 
     return binding.root
   }
